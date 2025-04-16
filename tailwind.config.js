@@ -18,6 +18,33 @@ module.exports = {
           800: '#3730a3',
           900: '#312e81',
         }
+      },
+      animation: {
+        'gradient-x': 'gradient-x 8s ease infinite',
+        'glow': 'glow 2s ease-in-out infinite alternate',
+      },
+      keyframes: {
+        'gradient-x': {
+          '0%, 100%': {
+            'background-size': '200% 200%',
+            'background-position': 'left center'
+          },
+          '50%': {
+            'background-size': '200% 200%',
+            'background-position': 'right center'
+          },
+        },
+        'glow': {
+          '0%': {
+            'box-shadow': '0 0 5px rgba(79, 70, 229, 0.5)'
+          },
+          '100%': {
+            'box-shadow': '0 0 20px rgba(79, 70, 229, 0.8)'
+          },
+        }
+      },
+      backdropBlur: {
+        xs: '2px',
       }
     },
   },
