@@ -10,13 +10,23 @@ const DashboardView = () => {
     <div className="space-y-6">
       <FinancialSummary />
       
+      {/* Responsive grid layout */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <ExpensesByCategoryChart />
-        <IncomeVsExpensesChart />
+        <div className="bg-white/10 backdrop-blur-sm p-4 rounded-lg shadow-lg border border-white/5">
+          <ExpensesByCategoryChart />
+        </div>
+        <div className="bg-white/10 backdrop-blur-sm p-4 rounded-lg shadow-lg border border-white/5">
+          <IncomeVsExpensesChart />
+        </div>
       </div>
       
-      <SpendingTrendsChart />
-      <BudgetProgressList />
+      <div className="bg-white/10 backdrop-blur-sm p-4 rounded-lg shadow-lg border border-white/5">
+        <SpendingTrendsChart />
+      </div>
+      
+      <div className="bg-white/10 backdrop-blur-sm p-4 rounded-lg shadow-lg border border-white/5">
+        <BudgetProgressList />
+      </div>
     </div>
   );
 };

@@ -1,4 +1,4 @@
-/* Enhanced futuristic styling beyond Tailwind */
+/* Enhanced futuristic styling beyond Tailwind with mobile responsiveness */
 
 /* Animation for floating blob elements */
 @keyframes blob {
@@ -97,4 +97,89 @@
   
   button:active:not(:disabled) {
     transform: translateY(1px);
+  }
+  
+  /* Mobile responsiveness improvements */
+  @media (max-width: 640px) {
+    /* Card adjustments */
+    .shadow-md {
+      margin-bottom: 1rem;
+    }
+  
+    /* Reduce padding on mobile */
+    .p-4 {
+      padding: 0.75rem;
+    }
+  
+    /* Smaller text on mobile */
+    .text-2xl {
+      font-size: 1.25rem;
+      line-height: 1.75rem;
+    }
+    
+    /* Adjust gap for mobile forms */
+    .gap-4 {
+      gap: 0.5rem;
+    }
+    
+    /* Better table scrolling on mobile */
+    .overflow-x-auto {
+      -webkit-overflow-scrolling: touch;
+    }
+    
+    /* Reduce blob animation complexity on mobile for better performance */
+    .animate-blob {
+      animation: none;
+      opacity: 0.05;
+    }
+  }
+  
+  /* Medium devices (tablets) */
+  @media (min-width: 641px) and (max-width: 1024px) {
+    /* Adjust chart sizes */
+    .h-64 {
+      height: 14rem;
+    }
+    
+    /* Adjust grid layouts */
+    .grid-cols-3 {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    
+    /* Medium animation complexity */
+    .animate-blob {
+      animation-duration: 10s;
+      opacity: 0.08;
+    }
+  }
+  
+  /* Reduce motion for users who prefer it */
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+  
+  /* High contrast improvements */
+  @media (prefers-contrast: high) {
+    :root {
+      --indigo-400: #fff;
+      --indigo-200: #fff;
+    }
+    
+    .border {
+      border-width: 2px;
+    }
+    
+    .text-indigo-200,
+    .text-indigo-300 {
+      color: white;
+    }
+    
+    .bg-white\/10 {
+      background-color: rgba(0, 0, 0, 0.8);
+    }
   }

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useFinance } from '../../contexts/FinanceContext';
+import { Plus } from 'lucide-react';
 
 const TransactionForm = () => {
   const { addTransaction } = useFinance();
@@ -42,32 +43,32 @@ const TransactionForm = () => {
   };
 
   return (
-    <div className="bg-white rounded-lg shadow-md p-4">
-      <h3 className="text-lg font-semibold mb-4">Add New Transaction</h3>
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+    <div className="bg-white/10 backdrop-blur-sm rounded-lg shadow-lg p-4 border border-white/5">
+      <h3 className="text-lg font-semibold mb-4 text-indigo-200">Add New Transaction</h3>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         <div>
-          <label className="block text-sm font-medium text-gray-700">Date</label>
+          <label className="block text-sm font-medium text-indigo-300 mb-1">Date</label>
           <input
             type="date"
             name="date"
             value={newTransaction.date}
             onChange={handleInputChange}
-            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2 border"
+            className="w-full rounded-md bg-indigo-900/30 border border-indigo-500/30 shadow-sm p-2 text-white focus:ring-2 focus:ring-indigo-500/50"
           />
         </div>
         <div>
-          <label className="block text-sm font-medium text-gray-700">Category</label>
+          <label className="block text-sm font-medium text-indigo-300 mb-1">Category</label>
           <input
             type="text"
             name="category"
             value={newTransaction.category}
             onChange={handleInputChange}
             placeholder="e.g., Groceries"
-            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2 border"
+            className="w-full rounded-md bg-indigo-900/30 border border-indigo-500/30 shadow-sm p-2 text-white focus:ring-2 focus:ring-indigo-500/50"
           />
         </div>
         <div>
-          <label className="block text-sm font-medium text-gray-700">Amount</label>
+          <label className="block text-sm font-medium text-indigo-300 mb-1">Amount</label>
           <input
             type="number"
             name="amount"
@@ -76,42 +77,43 @@ const TransactionForm = () => {
             min="0.01"
             step="0.01"
             placeholder="0.00"
-            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2 border"
+            className="w-full rounded-md bg-indigo-900/30 border border-indigo-500/30 shadow-sm p-2 text-white focus:ring-2 focus:ring-indigo-500/50"
           />
         </div>
-        <div className="flex flex-col">
-          <label className="block text-sm font-medium text-gray-700">Type</label>
-          <div className="mt-1 flex space-x-4">
-            <label className="inline-flex items-center">
+        <div>
+          <label className="block text-sm font-medium text-indigo-300 mb-1">Type</label>
+          <div className="grid grid-cols-2 gap-2 h-10">
+            <label className="flex items-center justify-center bg-indigo-900/30 border border-indigo-500/30 rounded-md cursor-pointer">
               <input
                 type="radio"
                 name="type"
                 value="income"
                 checked={newTransaction.type === 'income'}
                 onChange={handleInputChange}
-                className="form-radio text-indigo-600"
+                className="sr-only"
               />
-              <span className="ml-2">Income</span>
+              <span className={`text-sm ${newTransaction.type === 'income' ? 'text-green-400' : 'text-indigo-300'}`}>Income</span>
             </label>
-            <label className="inline-flex items-center">
+            <label className="flex items-center justify-center bg-indigo-900/30 border border-indigo-500/30 rounded-md cursor-pointer">
               <input
                 type="radio"
                 name="type"
                 value="expense"
                 checked={newTransaction.type === 'expense'}
                 onChange={handleInputChange}
-                className="form-radio text-indigo-600"
+                className="sr-only"
               />
-              <span className="ml-2">Expense</span>
+              <span className={`text-sm ${newTransaction.type === 'expense' ? 'text-red-400' : 'text-indigo-300'}`}>Expense</span>
             </label>
           </div>
         </div>
       </div>
       <button
         onClick={handleAddTransaction}
-        className="mt-4 px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+        className="mt-4 px-4 py-2 bg-gradient-to-r from-indigo-600 to-indigo-800 text-white rounded-md hover:from-indigo-700 hover:to-indigo-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 flex items-center justify-center gap-2 w-full sm:w-auto"
       >
-        Add Transaction
+        <Plus size={16} />
+        <span>Add Transaction</span>
       </button>
     </div>
   );
